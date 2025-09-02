@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biznes Tizimi</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+     Complete redesign with hamburger menu and modern layout 
+    <div class="app">
+         Mobile Header 
+        <header class="header">
+            <div class="header-content">
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="logo">Biznes Tizimi</h1>
+                <div class="header-stats">
+                    <span class="profit-indicator" id="todayProfitHeader">+0</span>
+                </div>
+            </div>
+        </header>
+
+         Sidebar Navigation 
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Menyu</h2>
+                <button class="close-sidebar" id="closeSidebar">×</button>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-section="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Bosh sahifa</span>
+                </a></li>
+                <li><a href="#" class="nav-link" data-section="purchase">
+                    <span class="nav-icon">📦</span>
+                    <span>Xarid</span>
+                </a></li>
+                <li><a href="#" class="nav-link" data-section="warehouse">
+                    <span class="nav-icon">🏪</span>
+                    <span>Omborxona</span>
+                </a></li>
+                <li><a href="#" class="nav-link" data-section="sales">
+                    <span class="nav-icon">💰</span>
+                    <span>Sotish</span>
+                </a></li>
+                <li><a href="#" class="nav-link" data-section="reports">
+                    <span class="nav-icon">📈</span>
+                    <span>Hisobotlar</span>
+                </a></li>
+                <li><a href="#" class="nav-link" data-section="archive">
+                    <span class="nav-icon">📋</span>
+                    <span>Arxiv</span>
+                </a></li>
+                <li><a href="#" class="nav-link" data-section="contacts">
+                    <span class="nav-icon">👥</span>
+                    <span>Kontaktlar</span>
+                </a></li>
+            </ul>
+        </nav>
+
+         Overlay 
+        <div class="overlay" id="overlay"></div>
+
+         Main Content 
+        <main class="main-content">
+             Dashboard Section 
+            <section id="dashboard" class="section active">
+                <div class="section-header">
+                    <h2>Biznes Ko'rsatkichlari</h2>
+                    <p class="section-subtitle">Bugungi holat va statistikalar</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">💼</div>
+                        <div class="stat-content">
+                            <h3>Omborxona Qiymati</h3>
+                            <p class="stat-value" id="totalWarehouseValue">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon">💵</div>
+                        <div class="stat-content">
+                            <h3>Bugungi Sotish</h3>
+                            <p class="stat-value" id="todaySales">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card profit">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <h3>Bugungi Foyda</h3>
+                            <p class="stat-value" id="todayProfit">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card info">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-content">
+                            <h3>Mahsulot Turlari</h3>
+                            <p class="stat-value" id="totalProducts">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>So'nggi Faoliyatlar</h3>
+                    </div>
+                    <div class="card-content">
+                        <div id="recentActivities" class="activity-list"></div>
+                    </div>
+                </div>
+            </section>
+
+             Purchase Section 
+            <section id="purchase" class="section">
+                <div class="section-header">
+                    <h2>Mahsulot Xarid Qilish</h2>
+                    <p class="section-subtitle">Yangi mahsulot qo'shish</p>
+                </div>
+                
+                <div class="card">
+                    <form id="purchaseForm" class="form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="productName">Mahsulot nomi</label>
+                                <input type="text" id="productName" required placeholder="Shaftoli Nektarin">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="quantity">Miqdori (kg)</label>
+                                <input type="number" id="quantity" required min="0.1" step="0.1" placeholder="1000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="purchasePrice">Xarid narxi (kg/so'm)</label>
+                                <input type="number" id="purchasePrice" required min="0" step="100" placeholder="5000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="supplier">Yetkazib beruvchi</label>
+                                <input type="text" id="supplier" required placeholder="Kompaniya nomi">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="supplierPhone">Telefon raqami</label>
+                                <input type="tel" id="supplierPhone" placeholder="+998 90 123 45 67">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="vehicleNumber">Fura raqami</label>
+                                <input type="text" id="vehicleNumber" placeholder="01A123BC">
+                            </div>
+                        </div>
+                        
+                        <div class="total-display">
+                            <span>Umumiy xarajat:</span>
+                            <span class="total-amount" id="totalCost">0 so'm</span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Xarid qilish</button>
+                    </form>
+                </div>
+            </section>
+
+             Warehouse Section 
+            <section id="warehouse" class="section">
+                <div class="section-header">
+                    <h2>Omborxona Holati</h2>
+                    <p class="section-subtitle">Mavjud mahsulotlar</p>
+                </div>
+                
+                <div class="warehouse-summary">
+                    <div class="summary-card">
+                        <h3>Umumiy qiymat: <span id="warehouseTotalValue">0 so'm</span></h3>
+                    </div>
+                </div>
+                
+                <div id="warehouseList" class="warehouse-grid"></div>
+            </section>
+
+             Sales Section 
+            <section id="sales" class="section">
+                <div class="section-header">
+                    <h2>Mahsulot Sotish</h2>
+                    <p class="section-subtitle">Ombordan sotish</p>
+                </div>
+                
+                <div class="card">
+                    <form id="salesForm" class="form">
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="saleProduct">Mahsulot tanlash</label>
+                                <select id="saleProduct" required>
+                                    <option value="">Mahsulot tanlang</option>
+                                </select>
+                            </div>
+                            
+                            <div class="product-info" id="productInfo" style="display: none;">
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span>Mavjud:</span>
+                                        <span id="availableQuantity">0 kg</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span>Xarid narxi:</span>
+                                        <span id="productPurchasePrice">0 so'm/kg</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="saleQuantity">Sotish miqdori (kg)</label>
+                                <input type="number" id="saleQuantity" required min="0.1" step="0.1" placeholder="500">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="salePrice">Sotish narxi (kg/so'm)</label>
+                                <input type="number" id="salePrice" required min="0" step="100" placeholder="7000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customer">Xaridor</label>
+                                <input type="text" id="customer" required placeholder="Xaridor nomi">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customerPhone">Telefon raqami</label>
+                                <input type="tel" id="customerPhone" placeholder="+998 90 123 45 67">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="deliveryVehicle">Yetkazib berish furasi</label>
+                                <input type="text" id="deliveryVehicle" placeholder="01A123BC">
+                            </div>
+                        </div>
+                        
+                        <div class="calculation-display">
+                            <div class="calc-row">
+                                <span>Sotish summasi:</span>
+                                <span id="totalSaleAmount">0 so'm</span>
+                            </div>
+                            <div class="calc-row">
+                                <span>Xarajat:</span>
+                                <span id="totalCostAmount">0 so'm</span>
+                            </div>
+                            <div class="calc-row profit-row">
+                                <span>Foyda:</span>
+                                <span id="profitAmount">0 so'm</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Sotish</button>
+                    </form>
+                </div>
+            </section>
+
+             Reports Section 
+            <section id="reports" class="section">
+                <div class="section-header">
+                    <h2>Hisobotlar</h2>
+                    <p class="section-subtitle">Moliyaviy tahlil</p>
+                </div>
+                
+                <div class="card">
+                    <div class="report-controls">
+                        <select id="reportPeriod">
+                            <option value="today">Bugun</option>
+                            <option value="week">Bu hafta</option>
+                            <option value="month">Bu oy</option>
+                            <option value="all">Barcha vaqt</option>
+                        </select>
+                        <button id="generateReport" class="btn btn-secondary">Yangilash</button>
+                    </div>
+                    
+                    <div class="report-grid">
+                        <div class="report-card">
+                            <h3>Sotish</h3>
+                            <p class="report-value" id="reportSales">0 so'm</p>
+                        </div>
+                        <div class="report-card">
+                            <h3>Xarajat</h3>
+                            <p class="report-value" id="reportCosts">0 so'm</p>
+                        </div>
+                        <div class="report-card profit">
+                            <h3>Foyda</h3>
+                            <p class="report-value" id="reportProfit">0 so'm</p>
+                        </div>
+                        <div class="report-card">
+                            <h3>Tranzaksiyalar</h3>
+                            <p class="report-value" id="reportTransactions">0</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             Archive Section 
+            <section id="archive" class="section">
+                <div class="section-header">
+                    <h2>Tranzaksiyalar Arxivi</h2>
+                    <p class="section-subtitle">Barcha operatsiyalar tarixi</p>
+                </div>
+                
+                <div class="card">
+                    <div class="archive-controls">
+                        <select id="archiveFilter">
+                            <option value="all">Barchasi</option>
+                            <option value="purchase">Xaridlar</option>
+                            <option value="sale">Sotishlar</option>
+                        </select>
+                        <input type="date" id="archiveDate">
+                    </div>
+                    
+                    <div id="archiveList" class="archive-list"></div>
+                </div>
+            </section>
+
+             Contacts Section 
+            <section id="contacts" class="section">
+                <div class="section-header">
+                    <h2>Kontaktlar</h2>
+                    <p class="section-subtitle">Hamkorlar ma'lumotlari</p>
+                </div>
+                
+                <div class="card">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="suppliers">Yetkazib beruvchilar</button>
+                        <button class="tab-btn" data-tab="customers">Xaridorlar</button>
+                    </div>
+                    
+                    <div id="suppliers" class="tab-content active">
+                        <div id="suppliersList" class="contacts-grid"></div>
+                    </div>
+                    
+                    <div id="customers" class="tab-content">
+                        <div id="customersList" class="contacts-grid"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
